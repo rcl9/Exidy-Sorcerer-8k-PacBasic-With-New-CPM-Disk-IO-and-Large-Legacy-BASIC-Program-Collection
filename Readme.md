@@ -1,34 +1,29 @@
-To do
-    - Make up a definitive pacbasic.hlp file to replace the ones everywhere
-    - Add meta data tags to my recent repos
-    - Fix up the link to the TRS-80 repo on this page
-
 # Exidy Sorcerer 8k PacBasic With New CP/M Disk IO and Large (180 File) Legacy BASIC Program Collection
 
 This repository was created to "market" or make more people aware of my customized "PacBasic" work of 1981 which added CP/M disk I/O commands to the stock Exidy Sorcerer 8k BASIC-in-ROM. To this very day retro-computing people still struggle to run Rom-Pac 8k BASIC programs on their real or emulated Exidy Sorcerer machines by way of data cassette file loading (which is so Neanderthal in my world!). A few dozen people had acquired my PacBasic and [TRS-80 Level II BASIC](<https://github.com/rcl9/Sorc-80--How-To-Run-TRS80-BASIC-Programs-Natively-On-The-Exidy-Sorcerer>) systems for the Exidy Sorcerer back in the 1980s but otherwise none of my work has found its way into common retro-computing archives, until now. 
 
 <center>
-<img src="Images/Hangman1.webp" alt="" style="width:75%; height:auto;">
+<img src="Images/Hangman1.webp" alt="" style="width:60%; height:auto;">
 </center>
 
 This repo will bring current Exidy Sorcerer users into the 21st century with the release of these files of mine from the early 1980s:
 
 1) My [PacBasic.com executable](/PacBasic/PacBasic.com) for CP/M which is the stock Exidy 8k BASIC-in-ROM relocated to 8000H and with my new DLOAD, DSAVE and DIR commands.
 
-2) My personal [curated and notarized collection](/Exidy Sorcerer BASIC program collection) of 180 Exidy 8k BASIC programs from the ~1979 to ~1982 era which run under the PacBasic.com program. 
+2) My personal [curated and notarized collection](</Exidy Sorcerer BASIC program collection>) of 180 Exidy 8k BASIC programs from the ~1979 to ~1982 era which run under the PacBasic.com program. 
 
 ## A Quick Overview - How to Load and Run the BASIC Programs in this Repository
 
 1) First, you need to get the MAME emulator up and running on your computer unless you have a real Exidy Sorcerer running CP/M. I have created a good [hand's on tutorial](<https://github.com/rcl9/How-to-Set-Up-the-MAME-Emulator-for-the-Exidy-Sorcerer-Running-Dreamdisk-CPM>) explaining how to do this. 
 
-2) Create a .mfi disk image file for MAME, or a real CP/M physical disk of your own format, then place [PacBasic.com](/PacBasic/PacBasic.com),  [PacBasic.hlp](/PacbBasic/PacBasic.hlp) and the unzipped [collection of .bas files](/Exidy Sorcerer BASIC program collection) on one or more your CP/M disk(s), depending on its disk capacity. I have created a [tutorial](<https://github.com/rcl9/How-to-Set-Up-the-MAME-Emulator-for-the-Exidy-Sorcerer-Running-Dreamdisk-CPM>) about how to do this in a scripted manner for the MAME emulator (in the "*How to Create your own Dreamdisk Formatted .MFI Disk Images*" section).
+2) Create a .mfi disk image file for MAME, or a real CP/M physical disk of your own format, then place [PacBasic.com](/PacBasic/PacBasic.com),  [PacBasic.hlp](/PacbBasic/PacBasic.hlp) and the unzipped [collection of .bas files](</Exidy Sorcerer BASIC program collection>) on one or more your CP/M disk(s), depending on its disk capacity. I have created a [tutorial](<https://github.com/rcl9/How-to-Set-Up-the-MAME-Emulator-for-the-Exidy-Sorcerer-Running-Dreamdisk-CPM>) about how to do this in a scripted manner for the MAME emulator (in the "*How to Create your own Dreamdisk Formatted .MFI Disk Images*" section).
 
 3) Boot up your CP/M. At the CP/M prompt:
 
 ```
 	B>PacBasic			--> Start up PacBasic.com (assuming that it is on your second disk B:)
 	DLOAD"kaleidos.bas"	--> Load in my Kaleidoscope program
-	RUN				--> Execute it (press Control-C to abort the program's execution)
+	RUN					--> Execute it (press Control-C to abort the program's execution)
 ```
 
 Note: some BASIC programs in this collection will write custom machine language code to page zero (00 to FFH) as that was a common practice back in the day. However, this will overwrite the CP/M data buffers and hence corrupt any further usage of the DLOAD disk I/O command. In such cases you will need to restart CP/M and re-load PacBasic.com.
@@ -92,7 +87,7 @@ If any of the disk commands do not work, go to the monitor and cold start CP/M (
 
 ## My [Curated Collection](</Exidy Sorcerer BASIC program collection>) of 180 Exidy Sorcerer 8k BASIC Programs
 
-Around 1981 I archived all of my cassette tape based software onto my CP/M 2.2 8in floppy disks and then captured those 8in disk files to my PC between 2011 and 2018.  Fast forward many more years and then I forced myself to load up each and everyone of the following BASIC programs into my PacBasic program running under the MAME emulator so that I could offer this [curated and annotated collection of files](/Exidy Sorcerer BASIC program collection) to the retro computing community, for data preservation. Many of the files were hand typed in, ported from the PET computer or from the TRS-80 computer or written, by myself ("RCL9").
+Around 1981 I archived all of my cassette tape based software onto my CP/M 2.2 8in floppy disks and then captured those 8in disk files to my PC between 2011 and 2018.  Fast forward many more years and then I forced myself to load up each and everyone of the following BASIC programs into my PacBasic program running under the MAME emulator so that I could offer this [curated and annotated collection of files](</Exidy Sorcerer BASIC program collection>) to the retro computing community, for data preservation. Many of the files were hand typed in, ported from the PET computer or from the TRS-80 computer or written, by myself ("RCL9").
 
 For those that may ask, 8k *PacBasic.com* is not the same as the 24k Exidy *exbasic.com* v5.0 Disk BASIC. The latter is Microsoft's Disk BASIC which will not run the following .bas files without error. 
 
