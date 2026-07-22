@@ -1,0 +1,80 @@
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+        Exidy 8k 'PacBasic' with CP/M Disk Support
+
+                             By RCL9
+
+        (Rob's Retro Computing Archive) 
+     RetroComputingArchive@gmail.com
+                    https://github.com/rcl9
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+To this very day retro-computing people still struggle to run Rom-Pac 8k BASIC programs on their real or emulated Exidy Sorcerer machines by way of data cassette file loading (which is so Neanderthal in my world!). In 1981 I opted to solve this problem by relocating Rom-Pac BASIC to lower memory and adding DLOAD, DSAVE and DIR CP/M disk I/O comments. 
+
+Sorcerer standard 8k BASIC has been relocated from C000H to 8000H with new disk I/O routines residing from 7A59H to 7FFFH. It requires at least a 48k machine with CP/M located above 9D00H.  All PacBasic programs that have any machine language routines that call PacBasic ROM routines must be modified so that the addresses be relocated from C000H-DFFFH to 8000H-9FFFH. All others will work exactly the same as in Rom-Pac Basic. 
+
+Another potential problem are programs that were saved on tape starting below 01D5H. An example would be that of a small machine language program residing at 0000H and saved as part of the basic program using the monitor SA command. This small program will have to converted to data statements and poked into zero page when the program is loaded (as I had done back in the day with all of the BASIC programs in my curated collection). Only BASIC programs starting at 01D5H can be saved on the disk. This is because CP/M‘s zero page must be intact when the disk I/O commands are used in PacBasic.
+
+How to Execute
+-=-=-=-=-=-=-
+
+Start up CP/M and then execute:
+
+	B>PacBasic		--> Start up PacBasic.com (assuming that it is on your second disk B:)
+
+	DLOAD"kaleidos.bas"	--> Load in my Kaleidoscope program
+
+	RUN			--> Execute it (press Control-C to abort the program's execution)
+
+Note: some BASIC programs may write custom machine language code to page zero (00 to FFH) as that was a common practice back in the day. However, this will overwrite the CP/M data buffers and hence corrupt any further usage of the DLOAD disk I/O command. In such cases you will need to restart CP/M and re-load PacBasic.com.
+
+New Disk I/O Commands
+-=-=-=-=-=-=-=-=-=-=-
+
+DIR"A:FILENAME.TYP"
+	This prints the directory of drive X
+ 	- ‘A:’ is optional
+ 	- ‘FILENAME.TYP’ is optional
+	- If you change a disk in a drive between DSAVE’s then do a ‘DIR’ to initialize that drive.
+	 - ‘DIR "B:"’ will print the directory of B drive
+
+DSAVE"A:FILENAME"
+	This saves a basic program with filetype ‘BAS’ on disk X
+ 	- ‘A:’ is optional
+
+DLOAD"A:FILENAME"
+	This loads a Pac-basic program of type ‘BAS’ from disk into memory.
+	 - ‘A:’ is optional
+
+New Disk I/O Errors
+-=-=-=-=-=-=-=-=
+
+FF Error
+	File not found error
+ 	- Do a ‘DIR’ to initialize the disk or check to see if the program is really on that disk.
+
+DF Error
+	Disk full error
+
+NB Error
+	Not Pac-basic filetype ‘BAS’ program
+
+Memory Map
+-=-=-=-=-=-
+
+CP/M Zero Page 0000-00FF 
+Basic work area 0100-01D5 
+Basic text area 01D5-7A58 
+PacBasic 7A59H-9B80H
+CP/M 9D00H-BEFFH (48k)
+Monitor BF00H-BFFFH (48k)
+
+Other Need-to-Know Info
+-=-=-=-=-=-=-=-=-=-=-=
+
+To return to CP/M without destroying PacBasic and whatever program you have in memory, type ‘BYE’ then while in the monitor type ‘GO 0’ and the CP/M prompt should appear. If not, do a disk boot (PacBasic will still be untouched after a cold disk boot).
+
+In CP/M you may DIR, SAVE and ERA a program. This won't destroy PacBasic. You cannot 'STAT' a program while in CP/M because it will destroy the basic program presently in memory.
+
+To return to Basic from CP/M go to the monitor then type ‘GO 100’ and the basic will be warm started. To cold start the Basic, 'GO 8000'.
+
+If any of the disk commands do not work, go to the monitor and cold start CP/M (such as with a 'GO D000' for DISCUS DJ2D boot or 'GO BC00' for an Exidy FDS boot), then return to the monitor again and type ‘GO 100’ to restart PacBasic. Now the commands will work.

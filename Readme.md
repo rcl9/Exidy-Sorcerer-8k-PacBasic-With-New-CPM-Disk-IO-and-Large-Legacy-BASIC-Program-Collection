@@ -1,19 +1,21 @@
 To do
     - Make up a definitive pacbasic.hlp file to replace the ones everywhere
+    - Add meta data tags to my recent repos
+    - Fix up the link to the TRS-80 repo on this page
 
-# Exidy Sorcerer 8k PacBasic With New CP/M Disk IO and Large (182 File) Legacy BASIC Program Collection
+# Exidy Sorcerer 8k PacBasic With New CP/M Disk IO and Large (180 File) Legacy BASIC Program Collection
 
 This repository was created to "market" or make more people aware of my customized "PacBasic" work of 1981 which added CP/M disk I/O commands to the stock Exidy Sorcerer 8k BASIC-in-ROM. To this very day retro-computing people still struggle to run Rom-Pac 8k BASIC programs on their real or emulated Exidy Sorcerer machines by way of data cassette file loading (which is so Neanderthal in my world!). A few dozen people had acquired my PacBasic and [TRS-80 Level II BASIC](<https://github.com/rcl9/Sorc-80--How-To-Run-TRS80-BASIC-Programs-Natively-On-The-Exidy-Sorcerer>) systems for the Exidy Sorcerer back in the 1980s but otherwise none of my work has found its way into common retro-computing archives, until now. 
 
 <center>
-<img src="Images/Hangman1.webp" alt="">
+<img src="Images/Hangman1.webp" alt="" style="width:75%; height:auto;">
 </center>
 
 This repo will bring current Exidy Sorcerer users into the 21st century with the release of these files of mine from the early 1980s:
 
-1) My [PacBasic.com executable](/PacBasic/PacBasic.com) for CP/M. which is the stock Exidy 8k BASIC-in-ROM relocated to 8000H and with my new DLOAD, DSAVE and DIR commands.
+1) My [PacBasic.com executable](/PacBasic/PacBasic.com) for CP/M which is the stock Exidy 8k BASIC-in-ROM relocated to 8000H and with my new DLOAD, DSAVE and DIR commands.
 
-2) My personal [curated and notarized collection](/Exidy Sorcerer BASIC program collection) of 182 Exidy 8k BASIC programs from the ~1979 to ~1982 era. 
+2) My personal [curated and notarized collection](/Exidy Sorcerer BASIC program collection) of 180 Exidy 8k BASIC programs from the ~1979 to ~1982 era which run under the PacBasic.com program. 
 
 ## A Quick Overview - How to Load and Run the BASIC Programs in this Repository
 
@@ -24,9 +26,9 @@ This repo will bring current Exidy Sorcerer users into the 21st century with the
 3) Boot up your CP/M. At the CP/M prompt:
 
 ```
-	B>PacBasic		--> Start up PacBasic.com assuming that it is on your second disk)
+	B>PacBasic			--> Start up PacBasic.com (assuming that it is on your second disk B:)
 	DLOAD"kaleidos.bas"	--> Load in my Kaleidoscope program
-	RUN			--> Execute it (press Control-C to abort the program's execution)
+	RUN				--> Execute it (press Control-C to abort the program's execution)
 ```
 
 Note: some BASIC programs in this collection will write custom machine language code to page zero (00 to FFH) as that was a common practice back in the day. However, this will overwrite the CP/M data buffers and hence corrupt any further usage of the DLOAD disk I/O command. In such cases you will need to restart CP/M and re-load PacBasic.com.
@@ -39,43 +41,46 @@ Another potential problem are programs that were saved on tape starting below 01
 
 The new CP/M disk I/O commands:
 
-	**DIR"A:FILENAME.TYP"**
-    
+	DIR"A:FILENAME.TYP"
+ 
 		This prints the directory of drive X
 		- ‘A:’ is optional
 		- ‘FILENAME.TYP’ is optional
 		- If you change a disk in a drive between DSAVE’s then do a ‘DIR’ to initialize that drive.
 		- ‘DIR "B:"’ will print the directory of B drive
     
-	**DSAVE"A:FILENAME"**
-    
+	DSAVE"A:FILENAME"
+
 		This saves a basic program with filetype ‘BAS’ on disk X
 		 - ‘A:’ is optional
     
-	**DLOAD"A:FILENAME"**
-    
+	DLOAD"A:FILENAME"
+
 		This loads a Pac-basic program of type ‘BAS’ from disk into memory.
 		- ‘A:’ is optional
 
 And some new disk I/O errors:
 
-	 **FF Error**
+	FF Error
 		File not found error
 		- Do a ‘DIR’ to initialize the disk or check to see if the program is really on that disk.
     
-	**DF Error**
+	DF Error
 		Disk full error
     
-	* NB Error**
+	 NB Error
 		Not a PacBasic filetype ‘BAS’ program
 
 Memory map:
+
+```
 	CP/M Zero Page 0000-00FF 
 	BASIC work area 0100-01D5 
 	BASIC text area 01D5-7A58 
 	PacBasic 7A59H-9B80H
 	CP/M 9D00H-BEFFH (48k)
 	Exidy monitor work area: BF00H-BFFFH (48k)
+```
 
 To return to CP/M without destroying PacBasic and whatever program you have in memory, type ‘BYE’ then while in the monitor type ‘GO 0’ and the CP/M prompt should appear. If not, do a disk boot (PacBasic will still be untouched after a cold disk boot).
 
@@ -85,7 +90,7 @@ To return to Basic from CP/M go to the monitor then type ‘GO 100’ and the basic 
 
 If any of the disk commands do not work, go to the monitor and cold start CP/M (such as with a 'GO D000' for DISCUS DJ2D boot or 'GO BC00' for an Exidy FDS boot), then return to the monitor again and type ‘GO 100’ to restart PacBasic. Now the commands will work. 
 
-## My [Curated Collection](/Exidy Sorcerer BASIC program collection) of 182 Exidy Sorcerer 8k BASIC Programs
+## My [Curated Collection](</Exidy Sorcerer BASIC program collection>) of 180 Exidy Sorcerer 8k BASIC Programs
 
 Around 1981 I archived all of my cassette tape based software onto my CP/M 2.2 8in floppy disks and then captured those 8in disk files to my PC between 2011 and 2018.  Fast forward many more years and then I forced myself to load up each and everyone of the following BASIC programs into my PacBasic program running under the MAME emulator so that I could offer this [curated and annotated collection of files](/Exidy Sorcerer BASIC program collection) to the retro computing community, for data preservation. Many of the files were hand typed in, ported from the PET computer or from the TRS-80 computer or written, by myself ("RCL9").
 
@@ -114,7 +119,8 @@ Please also note: these binary .bas files are not in the standard cassette tape 
     etc
 ```
 
-I have also used this nomenclature on some descriptions from my past notes:s 
+I have also used this nomenclature on some descriptions from my past notes:
+
 	G = graphic
 	V = very good
 	O = Ok to play and not boring
@@ -174,7 +180,6 @@ I have also used this nomenclature on some descriptions from my past notes:s
 | drlivstn.bas    | A converted Radio Shack game. Dec 1980. Ported by Paul Tan. (GV)                                                                                                                                             |
 | elisa.bas       | The Elisa program of old (O)                                                                                                                                                                                 |
 | esp.bas         | ESP by North American Software, Toronto Canada. 1979 by N.S. Hal                                                                                                                                             |
-| expenses.bas    | Household expense record                                                                                                                                                                                     |
 | fli-inst.bas    | FLISI, Program of the Sorcerer E.S.G.G user group. A simulation of a 747                                                                                                                                     |
 | fli-simu.bas    | Flight Simulation, version 5, Nov 30 1980, a 747 simulator                                                                                                                                                   |
 | flower.bas      | Draws flower petal shapes (G)                                                                                                                                                                                |
@@ -194,7 +199,6 @@ I have also used this nomenclature on some descriptions from my past notes:s
 | hexapawn.bas    | The game of Hexapawn                                                                                                                                                                                         |
 | hi-q.bas        | The Game of Hi-Q                                                                                                                                                                                             |
 | horsrace.bas    | Greenwood Race Track Horse Race                                                                                                                                                                              |
-| index.bas       | A very simple program I wrote to list the applications and games I had on data tape                                                                                                                          |
 | inkblot.bas     | A simple program to make inkblots                                                                                                                                                                            |
 | kaleidos.bas    | Kaleidoscope written by RCL9, version 1 (G). It is written mostly in Z80 machine language and hence is pretty fast. It has interesting and fast 2D graphics which use my custom "Set/Reset" routine package. |
 | kong.bas        | Non-functional?                                                                                                                                                                                              |
@@ -279,7 +283,6 @@ I have also used this nomenclature on some descriptions from my past notes:s
 | sumeria.bas     | SUMER v1.3. "Government Exercise" RPG game                                                                                                                                                                   |
 | surround.bas    | Surround Game by Ray Bannon, June 26 1980.                                                                                                                                                                   |
 | swd&sorc.bas    | Sword and Sorcery II. An adventure game from Aug 1980 "80 Microcomputing". Typed in by Paul Tan.                                                                                                             |
-| tachscop.bas    | Some kind of human subject data entry program                                                                                                                                                                |
 | tanktrap.bas    | Tank Trap IV by Don Ursem, Quality Software, 1979                                                                                                                                                            |
 | tchdwn.bas      | Touchdown - A football Simulation by J.T Staley, 1979                                                                                                                                                        |
 | tflash.bas      | A demo of flashing text from the Sorcerer Port FE newsletter of Nov 1981.                                                                                                                                    |
