@@ -89,6 +89,10 @@ If any of the disk commands do not work, go to the monitor and cold start CP/M (
 
 Around 1981 I archived all of my cassette tape based software onto my CP/M 2.2 8in floppy disks and then captured those 8in disk files to my PC between 2011 and 2018.  Fast forward many more years and then I forced myself to load up each and everyone of the following BASIC programs into my PacBasic program running under the MAME emulator so that I could offer this [curated and annotated collection of files](</Exidy Sorcerer BASIC program collection>) to the retro computing community, for data preservation. Many of the files in the collection were hand typed in, ported from the PET computer, ported from the TRS-80 computer or written, by myself ("RCL9").
 
+<center>
+<img src="Images/PacBasic Program Collection.webp" alt="" style="width:75%; height:auto;">
+</center>
+
 <p>Please feel free to mirror this page and BASIC file collection as my intent is to make this material available far and wide for others to access in the deeper future once I am no longer alive. You can attribute the material as orignally coming from "<i>Rob's Retro Computing Archive (RCL9) - https://github.com/rcl9, RetroComputingArchive@gmail.com</i>" and also reference this GitHub repository.
 
 For those that may ask, 8k *PacBasic.com* is not the same as the 24k Exidy *exbasic.com* v5.0 Disk BASIC. The latter is Microsoft's Disk BASIC which will not run the following .bas files without error. 
